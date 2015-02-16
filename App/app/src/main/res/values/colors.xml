@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- bg -->
+    <color name="windowBg">#FFFFFF</color>
+
+    <!-- palette -->
+    <color name="primary50">#E3F2FD</color>
+    <color name="primary100">#BBDEFB</color>
+    <color name="primary200">#90CAF9</color>
+    <color name="primary300">#64B5F6</color>
+    <color name="primary400">#42A5F5</color>
+    <color name="primary500">#2196F3</color>
+    <color name="primary600">#1E88E5</color>
+    <color name="primary700">#1976D2</color>
+    <color name="primary800">#1565C0</color>
+    <color name="primary900">#0D47A1</color>
+    <color name="accent100">#F4FF81</color>
+    <color name="accent200">#EEFF41</color>
+    <color name="accent400">#C6FF00</color>
+    <color name="accent700">#AEEA00</color>
+
+    <color name="primary">@color/primary500</color>
+    <color name="primaryDark">@color/primary700</color>
+    <color name="accent">@color/accent200</color>
+    <color name="controlHighlight">@color/primary200</color>
+    <color name="controlHighlightSelected">@color/primary300</color>
+
+    <!-- text -->
+    <color name="blackPrimaryText">#DE000000</color>
+    <color name="blackSecondaryText">#8A000000</color>
+    <color name="blackIcons">@color/blackSecondaryText</color>
+    <color name="blackDisabledText">#42000000</color>
+    <color name="blackHintText">@color/blackDisabledText</color>
+    <color name="blackDivider">#1F000000</color>
+    <color name="whitePrimaryText">#FFFFFF</color>
+    <color name="whiteIcons">@color/whitePrimaryText</color>
+    <color name="whiteSecondaryText">#B2FFFFFF</color>
+    <color name="whiteDisabledText">#4DFFFFFF</color>
+    <color name="whiteHintText">@color/whiteDisabledText</color>
+    <color name="whiteDivider">#1FFFFFFF</color>
+
+    <!-- other -->
+
+</resources>

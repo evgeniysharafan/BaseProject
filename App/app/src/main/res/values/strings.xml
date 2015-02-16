@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BaseProject</string>
+
+    <!-- Actions -->
+    <string name="action_search">Search</string>
+    <string name="action_accounts">Accounts</string>
+    <string name="action_settings">Settings</string>
+
+</resources>

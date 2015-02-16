@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/chat_row_height"
+    android:paddingLeft="@dimen/left_right_padding"
+    android:paddingStart="@dimen/left_right_padding"
+    android:paddingRight="@dimen/left_right_padding"
+    android:paddingEnd="@dimen/left_right_padding"
+    android:background="?android:attr/selectableItemBackground">
+
+    <ImageButton
+        android:layout_width="@dimen/contact_icon_size"
+        android:layout_height="@dimen/contact_icon_size"
+        android:id="@+id/icon"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/ic_launcher"
+        android:background="@null"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        tools:ignore="ContentDescription" />
+
+    <com.devspark.robototextview.widget.RobotoTextView
+        style="@style/Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Last message"
+        android:id="@+id/message"
+        android:lines="1"
+        android:ellipsize="end"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginStart="@dimen/left_right_padding"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/icon"
+        android:layout_toEndOf="@+id/icon"
+        tools:ignore="RelativeOverlap" />
+
+    <com.devspark.robototextview.widget.RobotoTextView
+        style="@style/Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="First Last"
+        android:id="@+id/name"
+        android:lines="1"
+        android:ellipsize="end"
+        android:layout_above="@+id/message"
+        android:layout_alignLeft="@+id/message"
+        android:layout_alignStart="@+id/message" />
+
+    <com.devspark.robototextview.widget.RobotoTextView
+        style="@style/Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="25.01.2015 17:06"
+        android:id="@+id/time"
+        android:lines="1"
+        android:ellipsize="end"
+        android:layout_below="@+id/message"
+        android:layout_alignLeft="@+id/message"
+        android:layout_alignStart="@+id/message" />
+
+</RelativeLayout>
