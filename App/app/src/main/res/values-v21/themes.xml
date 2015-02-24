@@ -7,11 +7,11 @@
         <item name="android:windowAllowReturnTransitionOverlap">true</item>
         <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
         <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
-        <item name="android:colorControlHighlight">@color/controlHighlight</item>
+        <item name="android:colorControlHighlight">@color/control_highlight</item>
     </style>
 
     <style name="PopupTheme" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:colorControlHighlight">@color/controlHighlight</item>
+        <item name="android:colorControlHighlight">@color/control_highlight</item>
     </style>
 
 </resources>

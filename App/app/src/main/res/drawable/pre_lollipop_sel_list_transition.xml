@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <transition xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@color/controlHighlight" />
-    <item android:drawable="@color/controlHighlightSelected" />
+    <item android:drawable="@color/control_highlight" />
+    <item android:drawable="@color/control_highlight_selected" />
 
 </transition>
