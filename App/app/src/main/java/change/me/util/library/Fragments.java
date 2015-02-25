@@ -1,5 +1,6 @@
 package change.me.util.library;
 
+import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -191,12 +192,19 @@ public final class Fragments {
         transaction.commit();
     }
 
-    public static Fragment getByTag(FragmentManager fragmentManager, Class<?> fragment) {
-        return fragmentManager.findFragmentByTag(fragment.getSimpleName());
+    @SuppressWarnings("unchecked")
+    public static <T extends Fragment> T getById(FragmentManager fragmentManager, @IdRes int id) {
+        return (T) fragmentManager.findFragmentById(id);
     }
 
-    public static Fragment getByTag(FragmentManager fragmentManager, String tag) {
-        return fragmentManager.findFragmentByTag(tag);
+    @SuppressWarnings("unchecked")
+    public static <T extends Fragment> T getByTag(FragmentManager fragmentManager, Class<T> fragment) {
+        return (T) fragmentManager.findFragmentByTag(fragment.getSimpleName());
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T extends Fragment> T getByTag(FragmentManager fragmentManager, String tag) {
+        return (T) fragmentManager.findFragmentByTag(tag);
     }
 
     public static String getTag(Class<?> fragment) {
