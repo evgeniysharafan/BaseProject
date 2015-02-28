@@ -94,6 +94,10 @@ public final class Res {
         return resources.getDimension(id);
     }
 
+    public static int getDimensionPixelSize(int id) {
+        return resources.getDimensionPixelSize(id);
+    }
+
     public static String[] getStringArray(int id) {
         return resources.getStringArray(id);
     }
