@@ -122,6 +122,17 @@ public final class Res {
         return Math.round(convertToPixels(dp));
     }
 
+    public static int getStatusBarHeight() {
+        int result = 0;
+
+        int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getDimensionPixelSize(resourceId);
+        }
+
+        return result;
+    }
+
     public static String readAssetAsString(String name) throws IOException {
         InputStream is = getAssets().open(name);
         Writer writer = new StringWriter();
