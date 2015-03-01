@@ -305,6 +305,8 @@ public final class Utils {
 
     /**
      * Runs a piece of code just before the next draw, after layout and measurement
+     *
+     * @param drawNextFrame Return true to proceed with the current drawing pass, or false to cancel
      */
     public static void doOnPreDraw(final View view, final boolean drawNextFrame, final Runnable runnable) {
         final ViewTreeObserver.OnPreDrawListener listener = new ViewTreeObserver.OnPreDrawListener() {
