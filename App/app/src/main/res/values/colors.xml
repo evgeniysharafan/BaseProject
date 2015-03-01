@@ -21,9 +21,11 @@
 
     <color name="primary">@color/primary_500</color>
     <color name="primary_dark">@color/primary_700</color>
-    <color name="accent">@color/accent_200</color>
+    <color name="accent">@color/primary_500</color>
     <color name="control_highlight">@color/primary_200</color>
     <color name="control_highlight_selected">@color/primary_300</color>
+    <color name="toolbar_control_normal">@color/window_bg</color>
+    <color name="toolbar_control_activated">@color/window_bg</color>
 
     <!-- text -->
     <color name="black_primary_text">#DE000000</color>
