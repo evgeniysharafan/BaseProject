@@ -190,6 +190,10 @@ public class RevealAnimation {
      * Should be called on onPause()
      */
     public static void endAnimations() {
+        if (!Utils.hasLollipop()) {
+            return;
+        }
+
         if (revealSet != null && revealSet.isRunning())
             revealSet.end();
 
