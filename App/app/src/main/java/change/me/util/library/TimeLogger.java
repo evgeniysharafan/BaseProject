@@ -21,8 +21,13 @@ public final class TimeLogger {
         start = System.nanoTime();
     }
 
-    public void finish() {
+    public void finish(boolean needOneShotResult) {
         intervals.add(System.nanoTime() - start);
+
+        if (needOneShotResult) {
+            long timeNs = System.nanoTime() - start;
+            L.w(label + " shot time = " + timeNs + " ns, or " + (float) timeNs / 1000000 + " ms");
+        }
     }
 
     public void result() {
