@@ -14,6 +14,8 @@ import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import change.me.BuildConfig;
+
 /**
  * Logger
  */
@@ -34,7 +36,7 @@ public final class L {
     private static SparseArray<String> logFileLevels;
 
     static {
-        isDebug = Utils.isDebug();
+        isDebug = BuildConfig.DEBUG;
         tag = L.class.getSimpleName();
         loggerClassName = L.class.getName();
 

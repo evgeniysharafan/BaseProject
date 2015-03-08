@@ -21,7 +21,12 @@ public final class TimeLogger {
         start = System.nanoTime();
     }
 
-    public void finish(boolean needOneShotResult) {
+    public void finish() {
+        long timeNs = System.nanoTime() - start;
+        L.w(label + " shot time = " + timeNs + " ns, or " + (float) timeNs / 1000000 + " ms");
+    }
+
+    public void finishInterval(boolean needOneShotResult) {
         intervals.add(System.nanoTime() - start);
 
         if (needOneShotResult) {
@@ -30,7 +35,7 @@ public final class TimeLogger {
         }
     }
 
-    public void result() {
+    public void resultIntervals() {
         long timeNs = 0;
         for (Long interval : intervals) {
             timeNs += interval;
@@ -40,7 +45,7 @@ public final class TimeLogger {
         L.e(label + " time = " + timeNs + " ns, or " + (float) timeNs / 1000000 + " ms");
     }
 
-    public void reset() {
+    public void resetIntervals() {
         intervals.clear();
     }
 

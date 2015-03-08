@@ -217,7 +217,7 @@ public class RevealAnimation {
                 isReveal ? endRadius : startRevealRadius);
 
         reveal.setVisibility(View.VISIBLE);
-        Animator alphaAnim = ObjectAnimator.ofFloat(reveal, "alpha", isReveal ? 1 : 0, isReveal ? 0 : 1);
+        Animator alphaAnim = ObjectAnimator.ofFloat(reveal, View.ALPHA, isReveal ? 1 : 0, isReveal ? 0 : 1);
 
         AnimatorSet set = new AnimatorSet();
         set.setDuration(isReveal ? duration : (long) (duration * 0.7f));

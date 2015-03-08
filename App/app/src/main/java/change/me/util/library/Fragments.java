@@ -219,4 +219,12 @@ public final class Fragments {
         fragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
 
+    public static void popBackStack(FragmentManager fragmentManager) {
+        fragmentManager.popBackStack();
+    }
+
+    public static boolean isFragmentAdded(Fragment fragment) {
+        return fragment != null && fragment.isAdded();
+    }
+
 }

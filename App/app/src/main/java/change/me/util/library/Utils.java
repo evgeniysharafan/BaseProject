@@ -16,6 +16,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.BatteryManager;
 import android.os.Build;
+import android.os.Handler;
 import android.os.Looper;
 import android.os.StrictMode;
 import android.telephony.TelephonyManager;
@@ -41,9 +42,11 @@ public final class Utils {
     private static final String PREF_UUID_INSTALLATION_ID = "pref_uuid_installation_id";
 
     private static Application app;
-    private static boolean isDebug;
+    private static Handler uiHandler;
+    private static boolean isDebug = false;
     private static Boolean isTablet;
     private static ConnectivityManager connectivityManager;
+    private static InputMethodManager inputManager;
 
     private Utils() {
     }
@@ -52,8 +55,9 @@ public final class Utils {
         Utils.app = app;
         Utils.isDebug = isDebug;
 
-        if (isDebug)
+        if (isDebug) {
             enableStrictMode();
+        }
     }
 
     public static Application getApp() {
@@ -149,10 +153,7 @@ public final class Utils {
     }
 
     public static boolean hasInternetConnection() {
-        if (connectivityManager == null) {
-            connectivityManager = (ConnectivityManager) app.getSystemService(Context.CONNECTIVITY_SERVICE);
-        }
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        NetworkInfo networkInfo = getConnectivityService().getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isAvailable() && networkInfo.isConnected();
     }
 
@@ -230,9 +231,35 @@ public final class Utils {
         return emailPattern.matcher(email).matches();
     }
 
+    public static void showKeyboard(View view) {
+        if (view == null) {
+            L.w("view == null");
+            return;
+        }
+
+        getInputMethodService().showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+    }
+
     public static void hideKeyboard(View view) {
-        InputMethodManager inputManager = (InputMethodManager) app.getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        if (view == null) {
+            L.w("view == null");
+            return;
+        }
+
+        if (!getInputMethodService().isActive()) {
+            return;
+        }
+
+        getInputMethodService().hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public static boolean hasInputActive(View view) {
+        if (view == null) {
+            L.w("view == null");
+            return false;
+        }
+
+        return getInputMethodService().isActive(view);
     }
 
     public static void setClearableListeners(final EditText editText, final View clearButton) {
@@ -353,9 +380,50 @@ public final class Utils {
 
     public static void copyToClipboard(Context context, CharSequence label, CharSequence text) {
         if (TextUtils.isEmpty(text)) return;
-        ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(
+                Context.CLIPBOARD_SERVICE);
         ClipData clipData = ClipData.newPlainText(label == null ? "" : label, text);
         clipboardManager.setPrimaryClip(clipData);
+    }
+
+    public static void runOnUiThread(Runnable runnable) {
+        runOnUiThread(runnable, 0);
+    }
+
+    public static void runOnUiThread(Runnable runnable, long delay) {
+        if (delay == 0) {
+            getUiHandler().post(runnable);
+        } else {
+            getUiHandler().postDelayed(runnable, delay);
+        }
+    }
+
+    public static void cancelRunOnUiThread(Runnable runnable) {
+        getUiHandler().removeCallbacks(runnable);
+    }
+
+    private static ConnectivityManager getConnectivityService() {
+        if (connectivityManager == null) {
+            connectivityManager = (ConnectivityManager) app.getSystemService(Context.CONNECTIVITY_SERVICE);
+        }
+
+        return connectivityManager;
+    }
+
+    private static InputMethodManager getInputMethodService() {
+        if (inputManager == null) {
+            inputManager = (InputMethodManager) app.getSystemService(Context.INPUT_METHOD_SERVICE);
+        }
+
+        return inputManager;
+    }
+
+    private static Handler getUiHandler() {
+        if (uiHandler == null) {
+            uiHandler = new Handler(Looper.getMainLooper());
+        }
+
+        return uiHandler;
     }
 
 }

@@ -55,7 +55,7 @@ public final class IntentUtils {
      * behaviors based on the information found here.  Such uses are
      * <em>not</em> supported, and will likely break in the future.
      */
-    private static ActivityManager.RunningTaskInfo getForegroundTask() {
+    public static ActivityManager.RunningTaskInfo getForegroundTask() {
         ActivityManager am = (ActivityManager) Utils.getApp().getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningTaskInfo> foregroundTasks = am.getRunningTasks(1);
         if (foregroundTasks != null && !foregroundTasks.isEmpty()) {
