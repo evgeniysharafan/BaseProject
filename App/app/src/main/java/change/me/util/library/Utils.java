@@ -33,9 +33,6 @@ import java.util.regex.Pattern;
 
 import change.me.R;
 
-/**
- * Utils
- */
 public final class Utils {
 
     private static final String PREF_UNIQUE_DEVICE_ID = "pref_unique_device_id";
