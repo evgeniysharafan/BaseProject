@@ -1,7 +1,6 @@
 package change.me.util.library;
 
 import android.app.Application;
-import android.os.Handler;
 import android.widget.Toast;
 
 /**
@@ -61,8 +60,7 @@ public final class Toasts {
     }
 
     private static void showFromBackground(final CharSequence text, final int duration) {
-        Handler handler = new Handler();
-        handler.post(new Runnable() {
+        Utils.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 show(text, duration);
