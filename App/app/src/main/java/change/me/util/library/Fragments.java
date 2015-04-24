@@ -78,9 +78,27 @@ public final class Fragments {
      * @param customAnimationPopEnter ANIM_DEFAULT or animation
      * @param customAnimationPopExit  ANIM_DEFAULT or animation
      */
-    private static void replace(FragmentManager fragmentManager, int containerId, Fragment fragment,
-                                String tag, int transitionId, int customAnimationEnter, int customAnimationExit,
-                                int customAnimationPopEnter, int customAnimationPopExit, boolean addToBackStack) {
+    public static void replace(FragmentManager fragmentManager, int containerId, Fragment fragment,
+                               String tag, int transitionId, int customAnimationEnter, int customAnimationExit,
+                               int customAnimationPopEnter, int customAnimationPopExit, boolean addToBackStack) {
+        replace(fragmentManager, containerId, fragment, tag, transitionId, customAnimationEnter,
+                customAnimationExit, customAnimationPopEnter, customAnimationPopExit, addToBackStack, null);
+    }
+
+    /**
+     * @param tag                     can be null or empty string, in this case will be used
+     *                                fragment.getClass().getSimpleName() as tag.
+     * @param transitionId            TRANSIT_DEFAULT or transitionId
+     * @param customAnimationEnter    ANIM_DEFAULT or animation
+     * @param customAnimationExit     ANIM_DEFAULT or animation
+     * @param customAnimationPopEnter ANIM_DEFAULT or animation
+     * @param customAnimationPopExit  ANIM_DEFAULT or animation
+     * @param stackName               Name of the back stack.
+     */
+    public static void replace(FragmentManager fragmentManager, int containerId, Fragment fragment,
+                               String tag, int transitionId, int customAnimationEnter, int customAnimationExit,
+                               int customAnimationPopEnter, int customAnimationPopExit, boolean addToBackStack,
+                               String stackName) {
         final FragmentTransaction transaction = fragmentManager.beginTransaction();
 
         if (transitionId != TRANSIT_DEFAULT) {
@@ -97,7 +115,7 @@ public final class Fragments {
         transaction.replace(containerId, fragment, TextUtils.isEmpty(tag) ? fragment.getClass().getSimpleName() : tag);
 
         if (addToBackStack) {
-            transaction.addToBackStack(null);
+            transaction.addToBackStack(stackName);
         }
 
         transaction.commit();
@@ -217,6 +235,10 @@ public final class Fragments {
 
     public static void popEntireBackStackImmediate(FragmentManager fragmentManager) {
         fragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+    }
+
+    public static void popBackStackImmediate(String name, FragmentManager fragmentManager) {
+        fragmentManager.popBackStackImmediate(name, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
 
     public static void popBackStack(FragmentManager fragmentManager) {

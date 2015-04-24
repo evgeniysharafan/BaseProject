@@ -139,12 +139,12 @@ public final class L {
         log(Log.ERROR, msg, args);
     }
 
-    public static void e(Throwable throwable) {
+    public static void e(String msg, Throwable throwable) {
+        log(Log.ERROR, msg);
         log(Log.ERROR, throwable);
     }
 
-    public static void e(Throwable throwable, String msg, Object... args) {
-        log(Log.ERROR, msg, args);
+    public static void e(Throwable throwable) {
         log(Log.ERROR, throwable);
     }
 

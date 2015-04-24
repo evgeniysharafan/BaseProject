@@ -170,7 +170,12 @@ public class RevealAnimation {
         int screenHeight = Res.getDisplayMetrics().heightPixels;
 
         if (screenWidth != revealScreenWidth) {
-            startRevealX = screenWidth - (revealScreenWidth - startRevealX);
+            if (!Utils.isRtl()) {
+                startRevealX = screenWidth - (revealScreenWidth - startRevealX);
+            } else {
+                startRevealX = screenWidth - (screenWidth - startRevealX);
+            }
+
             startRevealY = screenHeight - (revealScreenHeight - startRevealY);
         }
 
@@ -209,8 +214,15 @@ public class RevealAnimation {
         int layoutHeight = screenHeight - getActionBarAndStatusBarHeight(actionBar);
         int startLayoutRevealY = startRevealY - getActionBarAndStatusBarHeight(actionBar);
 
-        int endRadius = (int) (Math.hypot(screenWidth, layoutHeight)
-                - Math.hypot(screenWidth - startRevealX, layoutHeight - startLayoutRevealY));
+        int endRadius;
+        if (!Utils.isRtl()) {
+            endRadius = (int) (Math.hypot(screenWidth, layoutHeight)
+                    - Math.hypot(screenWidth - startRevealX, layoutHeight - startLayoutRevealY));
+        } else {
+            endRadius = (int) (Math.hypot(screenWidth, layoutHeight)
+                    - Math.hypot(screenWidth - (screenWidth - startRevealX),
+                    layoutHeight - startLayoutRevealY));
+        }
 
         Animator revealAnim = ViewAnimationUtils.createCircularReveal(view,
                 startRevealX, startLayoutRevealY, isReveal ? startRevealRadius : endRadius,
