@@ -80,7 +80,12 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder> 
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    L.d("Element " + getPosition() + " clicked.");
+                    int clickedPosition = getAdapterPosition();
+                    if (clickedPosition != RecyclerView.NO_POSITION) {
+                        L.d("Element " + clickedPosition + " clicked.");
+                    } else {
+                        L.i("clickedPosition == RecyclerView.NO_POSITION");
+                    }
                 }
             });
         }

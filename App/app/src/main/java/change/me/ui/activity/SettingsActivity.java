@@ -4,17 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import change.me.R;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import change.me.R;
 
 
-public class SettingsActivity extends ActionBarActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
@@ -31,8 +30,10 @@ public class SettingsActivity extends ActionBarActivity {
 
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(R.string.action_settings);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.action_settings);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override

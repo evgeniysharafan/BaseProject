@@ -1,7 +1,7 @@
 package change.me.ui.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,7 +10,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import change.me.R;
 
-public class ChatsActivity extends ActionBarActivity {
+public class ChatsActivity extends AppCompatActivity {
 
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
