@@ -20,7 +20,6 @@ public class AccountsActivity extends AppCompatActivity {
 
     public static void launch(Activity activity) {
         activity.startActivity(new Intent(activity, AccountsActivity.class));
-
     }
 
     @Override
