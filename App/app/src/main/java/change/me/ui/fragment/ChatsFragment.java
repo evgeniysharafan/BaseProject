@@ -1,6 +1,5 @@
 package change.me.ui.fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,27 +12,14 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import change.me.R;
 import change.me.model.mockdata.MockData;
-import change.me.ui.activity.ChatsActivity;
 import change.me.ui.adapter.ChatsAdapter;
+import change.me.ui.adapter.ChatsAdapter.OnChatClickListener;
+import change.me.util.library.Toasts;
 
-public class ChatsFragment extends Fragment {
+public class ChatsFragment extends Fragment implements OnChatClickListener {
 
     @InjectView(R.id.recyclerView)
     RecyclerView recyclerView;
-
-    ChatsAdapter adapter;
-
-    ChatsActivity chatsActivity;
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            chatsActivity = (ChatsActivity) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.getLocalClassName() + " must be " + ChatsActivity.class);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,7 +27,7 @@ public class ChatsFragment extends Fragment {
         ButterKnife.inject(this, view);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(new ChatsAdapter(MockData.getChats(100, 5, 20)));
+        recyclerView.setAdapter(new ChatsAdapter(MockData.getChats(100, 5, 20), this));
 
         return view;
     }
@@ -50,6 +36,16 @@ public class ChatsFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
+    }
+
+    @Override
+    public void onChatClick(int position) {
+        Toasts.showShort("onChatClick");
+    }
+
+    @Override
+    public void onChatIconClick(int position) {
+        Toasts.showShort("onChatIconClick");
     }
 
 }

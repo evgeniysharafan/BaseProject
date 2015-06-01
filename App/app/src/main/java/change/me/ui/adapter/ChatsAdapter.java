@@ -23,12 +23,21 @@ import change.me.util.library.L;
 
 public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder> {
 
-    private List<Chat> chats;
+    public interface OnChatClickListener {
+        void onChatClick(int position);
+
+        void onChatIconClick(int position);
+    }
+
+    private final List<Chat> chats;
+    private final OnChatClickListener listener;
+
     private Transformation roundedTransformation = new CircleTransformation(0, 0);
     private Context context;
 
-    public ChatsAdapter(List<Chat> chats) {
+    public ChatsAdapter(List<Chat> chats, OnChatClickListener listener) {
         this.chats = chats;
+        this.listener = listener;
     }
 
     @Override
@@ -39,7 +48,7 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder> 
 
         View v = LayoutInflater.from(context).inflate(R.layout.row_chat, parent, false);
 
-        return new ViewHolder(v);
+        return new ViewHolder(v, listener);
     }
 
     @Override
@@ -62,7 +71,7 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder> 
         return chats.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
         @InjectView(R.id.icon)
         ImageButton icon;
@@ -73,16 +82,26 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder> 
         @InjectView(R.id.time)
         TextView time;
 
-        ViewHolder(View v) {
+        ViewHolder(View v, OnChatClickListener listener) {
             super(v);
             ButterKnife.inject(this, v);
 
+            setOnClickListener(v, listener);
+            setOnClickListener(icon, listener);
+        }
+
+        private void setOnClickListener(View v, final OnChatClickListener listener) {
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int clickedPosition = getAdapterPosition();
                     if (clickedPosition != RecyclerView.NO_POSITION) {
-                        L.d("Element " + clickedPosition + " clicked.");
+                        int id = v.getId();
+                        if (id == R.id.icon) {
+                            listener.onChatIconClick(clickedPosition);
+                        } else {
+                            listener.onChatClick(clickedPosition);
+                        }
                     } else {
                         L.i("clickedPosition == RecyclerView.NO_POSITION");
                     }
