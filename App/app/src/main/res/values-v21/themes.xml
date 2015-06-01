@@ -10,6 +10,11 @@
         <item name="android:colorControlHighlight">@color/control_highlight</item>
     </style>
 
+    <style name="NavigationDrawerActivity" parent="AppTheme">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
     <style name="PopupTheme" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:colorControlHighlight">@color/control_highlight</item>
     </style>

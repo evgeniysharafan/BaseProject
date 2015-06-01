@@ -8,6 +8,8 @@
         <item name="android:selectableItemBackground">?selectableItemBackground</item>
     </style>
 
+    <style name="NavigationDrawerActivity" parent="AppTheme" />
+
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>

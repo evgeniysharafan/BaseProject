@@ -27,10 +27,15 @@ public final class ReflectionUtils {
     }
 
     public static <E> E callWithDefault(Object target, String methodName, E defaultValue) {
+        //noinspection TryWithIdenticalCatches
         try {
             //noinspection unchecked
             return (E) target.getClass().getMethod(methodName, (Class[]) null).invoke(target);
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+        } catch (NoSuchMethodException e) {
+            L.e(e);
+        } catch (IllegalAccessException e) {
+            L.e(e);
+        } catch (InvocationTargetException e) {
             L.e(e);
         }
 

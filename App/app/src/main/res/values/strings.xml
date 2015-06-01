@@ -3,6 +3,11 @@
 
     <string name="app_name">BaseProject</string>
 
+    <string name="drawer_close">Close</string>
+    <string name="drawer_open">Open</string>
+    <string name="fragment_first">First</string>
+    <string name="fragment_second">Second</string>
+
     <!-- Actions -->
     <string name="action_search">Search</string>
     <string name="action_accounts">Accounts</string>
