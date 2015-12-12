@@ -6,6 +6,9 @@
         <item name="android:listChoiceBackgroundIndicator">?listChoiceBackgroundIndicator</item>
         <item name="selectableItemBackground">@drawable/sel_pre_lollipop_item_bg</item>
         <item name="android:selectableItemBackground">?selectableItemBackground</item>
+        <item name="colorControlHighlight">@color/control_highlight</item>
+        <item name="colorControlNormal">@color/primary</item>
+        <item name="colorControlActivated">@color/primary</item>
     </style>
 
     <style name="NavigationDrawerActivity" parent="AppTheme" />
@@ -17,6 +20,8 @@
         <item name="actionModeBackground">@color/primary</item>
         <item name="android:windowBackground">@color/window_bg</item>
         <item name="android:windowContentOverlay">@null</item>
+        <item name="buttonStyle">@style/Button</item>
+        <item name="android:buttonStyle">@style/Button</item>
     </style>
 
     <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
