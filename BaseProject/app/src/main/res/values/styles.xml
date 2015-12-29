@@ -11,7 +11,7 @@
         <item name="colorControlHighlight">@color/primary_700</item>
     </style>
 
-    <style name="Button.Base" parent="Widget.AppCompat.Button.Colored">
+    <style name="Button.Base" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:textSize">@dimen/text_body_medium</item>
         <item name="android:textColor">@color/white_primary_text</item>
         <item name="android:textAllCaps">true</item>

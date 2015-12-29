@@ -2,8 +2,9 @@ package change.me.util;
 
 import android.app.Application;
 
+import com.evgeniysharafan.utils.Utils;
+
 import change.me.BuildConfig;
-import change.me.util.library.Utils;
 
 
 public final class App extends Application {

@@ -3,14 +3,13 @@
     android:layout_height="match_parent">
 
     <include
-        layout="@layout/toolbar"
-        android:id="@+id/toolbar" />
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
-    <fragment
-        android:id="@+id/fragment_accounts"
+    <FrameLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="change.me.ui.fragment.AccountsFragment"
         android:layout_below="@+id/toolbar" />
 
 </RelativeLayout>

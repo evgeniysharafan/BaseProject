@@ -8,18 +8,18 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.evgeniysharafan.utils.L;
+import com.evgeniysharafan.utils.picasso.CircleTransformation;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import change.me.R;
 import change.me.model.Chat;
 import change.me.util.MessageUtils;
-import change.me.util.library.CircleTransformation;
-import change.me.util.library.L;
 
 public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder> {
 
@@ -73,18 +73,18 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder> 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.icon)
+        @Bind(R.id.icon)
         ImageButton icon;
-        @InjectView(R.id.name)
+        @Bind(R.id.name)
         TextView name;
-        @InjectView(R.id.message)
+        @Bind(R.id.message)
         TextView message;
-        @InjectView(R.id.time)
+        @Bind(R.id.time)
         TextView time;
 
         ViewHolder(View v, OnChatClickListener listener) {
             super(v);
-            ButterKnife.inject(this, v);
+            ButterKnife.bind(this, v);
 
             setOnClickListener(v, listener);
             setOnClickListener(icon, listener);

@@ -14,12 +14,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.evgeniysharafan.utils.Fragments;
+
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import change.me.R;
 import change.me.ui.fragment.FirstFragment;
 import change.me.ui.fragment.SecondFragment;
-import change.me.util.library.Fragments;
 
 public class NavigationDrawerActivity extends AppCompatActivity implements OnNavigationItemSelectedListener {
 
@@ -27,11 +28,11 @@ public class NavigationDrawerActivity extends AppCompatActivity implements OnNav
     private static final String STATE_SELECTED_ITEM_ID = "state_selected_item_id";
     private static final String TAG_FOR_FRAGMENT = "tag_for_fragment";
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.drawer)
+    @Bind(R.id.drawer)
     DrawerLayout drawer;
-    @InjectView(R.id.navigation_view)
+    @Bind(R.id.navigation_view)
     NavigationView navigationView;
 
     private ActionBarDrawerToggle drawerToggle;
@@ -42,17 +43,20 @@ public class NavigationDrawerActivity extends AppCompatActivity implements OnNav
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
+        restoreState(savedInstanceState);
+        setUpDrawer();
+        setUpToolbar();
+        setFragment();
+    }
+
+    private void restoreState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             selectedItemPosition = savedInstanceState.getInt(STATE_SELECTED_ITEM_POSITION);
             selectedItemId = savedInstanceState.getInt(STATE_SELECTED_ITEM_ID);
         }
-
-        setUpDrawer();
-        setUpToolbar();
-        setFragment();
     }
 
     private void setUpDrawer() {

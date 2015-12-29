@@ -3,19 +3,17 @@ package change.me.ui.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import change.me.R;
-
+import change.me.ui.fragment.SettingsFragment;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
 
     public static void launch(Activity activity) {
@@ -25,26 +23,14 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
-        ButterKnife.inject(this);
-
+        setContentView(R.layout.activity_for_fragment);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setTitle(R.string.action_settings);
-            actionBar.setDisplayHomeAsUpEnabled(true);
+
+        if (savedInstanceState == null) {
+            getFragmentManager().beginTransaction().replace(R.id.content, SettingsFragment.newInstance(),
+                    SettingsFragment.class.getSimpleName()).commit();
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == android.R.id.home) {
-            onBackPressed();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

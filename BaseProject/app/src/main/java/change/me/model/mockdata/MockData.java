@@ -1,6 +1,8 @@
 package change.me.model.mockdata;
 
 
+import com.evgeniysharafan.utils.RandomUtils;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -8,7 +10,6 @@ import java.util.List;
 import change.me.model.Account;
 import change.me.model.Chat;
 import change.me.model.Message;
-import change.me.util.library.RandomUtils;
 
 public final class MockData {
 
@@ -25,14 +26,14 @@ public final class MockData {
             int size = minMessagesPerChatCount
                     + RandomUtils.getInt(maxMessagesPerChatCount - minMessagesPerChatCount);
             for (int j = 0; j < size; j++) {
-                messages.add(new Message(RandomUtils.getLoremString(400), RandomUtils.getDateInMillis(365),
+                messages.add(new Message(RandomUtils.getLoremString(400, false), RandomUtils.getDateInMillis(365),
                         RandomUtils.getBool(), RandomUtils.getBool()));
             }
 
             Collections.sort(messages);
 
             chats.add(new Chat(RandomUtils.getInt(3) % 2 == 0
-                    ? RandomUtils.getLoremString(30)
+                    ? RandomUtils.getLoremString(30, false)
                     : RandomUtils.getPhoneNumber(), new ArrayList<>(messages)));
 
             Collections.sort(chats);

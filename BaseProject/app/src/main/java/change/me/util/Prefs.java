@@ -2,7 +2,7 @@ package change.me.util;
 
 import android.text.TextUtils;
 
-import change.me.util.library.PrefUtils;
+import com.evgeniysharafan.utils.PrefUtils;
 
 public final class Prefs {
 

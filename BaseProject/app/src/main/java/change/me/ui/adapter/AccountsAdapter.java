@@ -9,17 +9,17 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.evgeniysharafan.utils.L;
+import com.evgeniysharafan.utils.picasso.CircleTransformation;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import change.me.R;
 import change.me.model.Account;
-import change.me.util.library.CircleTransformation;
-import change.me.util.library.L;
 
 public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.ViewHolder> {
 
@@ -64,18 +64,18 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.ViewHo
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.icon)
+        @Bind(R.id.icon)
         ImageButton icon;
-        @InjectView(R.id.name)
+        @Bind(R.id.name)
         TextView name;
-        @InjectView(R.id.type)
+        @Bind(R.id.type)
         TextView type;
-        @InjectView(R.id.active)
+        @Bind(R.id.active)
         SwitchCompat active;
 
         ViewHolder(View v) {
             super(v);
-            ButterKnife.inject(this, v);
+            ButterKnife.bind(this, v);
 
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
