@@ -8,6 +8,3 @@ I will explain you why:
 * It implements Toolbar in the correct way. Android documentation has a mistake in the toolbar example, a toolbar in the example doesn't change his size in album orientation.
 * It contains attributes for palette and text colors.
 * It contains the most used dependencies.
-
--
-Now it contains util.library package, but in the future it will be moved to a separate project and will be available as gradle dependency.
