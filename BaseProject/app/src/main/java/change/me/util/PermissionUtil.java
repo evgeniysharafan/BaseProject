@@ -101,14 +101,14 @@ public class PermissionUtil {
         return PrefUtils.getBool(String.valueOf(requestCode), false);
     }
 
-    public static Snackbar showSnackbarWithOpenDetails(View container, @StringRes int text) {
-        return showSnackbar(container, text,
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        openDetailsSettings();
-                    }
-                });
+    public static Snackbar showSnackbarWithOpenDetails(final Activity activity,
+                                                       View container, @StringRes int text) {
+        return showSnackbar(container, text, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDetailsSettings(activity);
+            }
+        });
     }
 
     public static Snackbar showSnackbar(View container, @StringRes int text, View.OnClickListener click) {
@@ -123,12 +123,9 @@ public class PermissionUtil {
         return snackbar;
     }
 
-    public static void openDetailsSettings() {
+    public static void openDetailsSettings(Activity activity) {
         Uri data = new Uri.Builder().scheme("package").opaquePart(Utils.getPackageName()).build();
-        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-        intent.setData(data);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Utils.getApp().startActivity(intent);
+        activity.startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(data));
     }
 
     private static boolean isPermissionGranted(String permission) {
@@ -136,4 +133,3 @@ public class PermissionUtil {
     }
 
 }
-
