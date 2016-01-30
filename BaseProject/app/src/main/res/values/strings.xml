@@ -13,4 +13,7 @@
     <string name="action_accounts">Accounts</string>
     <string name="action_settings">Settings</string>
 
+    <!--Permissions-->
+    <string name="action_enable">ENABLE</string>
+
 </resources>
