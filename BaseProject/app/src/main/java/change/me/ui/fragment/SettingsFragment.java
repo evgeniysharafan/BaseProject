@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.evgeniysharafan.utils.ui.activity.DebugSettingsActivity;
+
 import change.me.R;
 
 public class SettingsFragment extends PreferenceFragment {
@@ -22,6 +24,8 @@ public class SettingsFragment extends PreferenceFragment {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.preferences);
+        DebugSettingsActivity.addDebugSettingsIfNeeded(getActivity(), getPreferenceScreen(), false,
+                "evgeniysharafan@gmail.com");
         setHasOptionsMenu(true);
     }
 
