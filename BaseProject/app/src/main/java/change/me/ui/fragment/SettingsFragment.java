@@ -1,7 +1,6 @@
 package change.me.ui.fragment;
 
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.evgeniysharafan.utils.Res;
-import com.evgeniysharafan.utils.Utils;
+import com.evgeniysharafan.utils.ui.activity.DebugSettingsActivity;
 
 import change.me.R;
-import change.me.ui.activity.DebugSettingsActivity;
 
 public class SettingsFragment extends PreferenceFragment {
 
@@ -27,20 +24,9 @@ public class SettingsFragment extends PreferenceFragment {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.preferences);
+        DebugSettingsActivity.addDebugSettingsIfNeeded(getActivity(), getPreferenceScreen(), false,
+                "evgeniysharafan@gmail.com");
         setHasOptionsMenu(true);
-        addDebugSettingsIfNeeded();
-    }
-
-    private void addDebugSettingsIfNeeded() {
-        if (Utils.isDebug()) {
-            Preference debugSettings = new Preference(getActivity());
-            debugSettings.setKey(Res.getString(R.string.key_debug_settings));
-            debugSettings.setTitle(R.string.title_debug_settings);
-            debugSettings.setIntent(DebugSettingsActivity.getIntent(getActivity(),
-                    "evgeniysharafan@gmail.com"));
-            debugSettings.setSummary(R.string.summary_debug_settings);
-            getPreferenceScreen().addPreference(debugSettings);
-        }
     }
 
     @Override

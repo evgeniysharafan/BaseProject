@@ -97,6 +97,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.github.johnkil.android-robototextview:robototextview:2.3.0'
 //    compile "com.evgeniysharafan.utils:utils:$utilsVersion"
+    compile project(':utils-release')
     compile "com.evgeniysharafan.utils:recycler:$utilsVersion"
     compile "com.evgeniysharafan.utils:picasso:$utilsVersion"
 }
