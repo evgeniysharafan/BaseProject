@@ -40,10 +40,6 @@ android {
             signingConfig signingConfigs.debug
             manifestPlaceholders = [allowBackup: false, fullBackupContent: false]
         }
-        qa {
-            signingConfig signingConfigs.debug
-            manifestPlaceholders = [allowBackup: false, fullBackupContent: false]
-        }
         release {
             signingConfig signingConfigs.release
             minifyEnabled false
@@ -70,7 +66,7 @@ android {
                 if ("debug".equals(buildType)) {
                     buildName = "${appName}_" + "${variant.buildType.name}"
                 } else {
-                    def df = new SimpleDateFormat("yy.MM.dd")
+                    def df = new SimpleDateFormat("dd.MM.yy")
                     df.setTimeZone(TimeZone.getTimeZone("UTC"))
 
                     buildName = "${appName}_" +

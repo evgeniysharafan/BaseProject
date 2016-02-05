@@ -385,7 +385,7 @@ public final class L {
                 if (emails != null) {
                     intent.putExtra(Intent.EXTRA_EMAIL, emails);
                 }
-                intent.putExtra(Intent.EXTRA_SUBJECT, getSendLogsSubject());
+                intent.putExtra(Intent.EXTRA_SUBJECT, DeviceInfo.getBaseSendSubject() + " logs");
                 intent.putExtra(Intent.EXTRA_TEXT, "Describe the issue here please");
                 intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
 
@@ -400,19 +400,6 @@ public final class L {
             e("Can't send logs, logsDir == null");
             Toasts.showLong("Can't send logs, logs directory doesn't exist or unavailable");
         }
-    }
-
-    private static String getSendLogsSubject() {
-        return new StringBuilder(50).append(DeviceInfo.getDeviceName())
-                .append(" ")
-                .append(Utils.getPackageName())
-                .append(" ")
-                .append(Utils.getVersionName())
-                .append(" ")
-                .append(Utils.getVersionCode())
-                .append(" ")
-                .append("logs")
-                .toString();
     }
 
     public static void clearLogsFolder() {

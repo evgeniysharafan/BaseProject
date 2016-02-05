@@ -130,13 +130,10 @@ public class DebugSettingsFragment extends PreferenceFragment implements OnPrefe
     public boolean onPreferenceClick(Preference preference) {
         String key = preference.getKey();
         if (key.equals(Res.getString(R.string.key_debug_send_device_info))) {
-            L.e("device info");
             DeviceInfo.sendDeviceInfoToEmail(getActivity(), getEmailsForSending());
         } else if (key.equals(Res.getString(R.string.key_debug_send_logs))) {
-            L.e("send logs");
             L.sendLogsToEmail(getActivity(), getEmailsForSending());
         } else if (key.equals(Res.getString(R.string.key_debug_clear_logs_folder))) {
-            L.e("clear logs");
             L.clearLogsFolder();
             update();
         }
@@ -148,7 +145,6 @@ public class DebugSettingsFragment extends PreferenceFragment implements OnPrefe
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         String key = preference.getKey();
         if (key.equals(Res.getString(R.string.key_debug_write_logs_to_file))) {
-            L.e("write logs: " + newValue);
             L.setNeedWriteToFile((Boolean) newValue, false);
             update();
         }

@@ -36,13 +36,26 @@ public final class DeviceInfo {
         if (emails != null) {
             intent.putExtra(Intent.EXTRA_EMAIL, emails);
         }
-        intent.putExtra(Intent.EXTRA_SUBJECT, getDeviceName() + " device info");
+        intent.putExtra(Intent.EXTRA_SUBJECT, getBaseSendSubject() + " device info");
         intent.putExtra(Intent.EXTRA_TEXT, getDeviceInfo());
 
         activity.startActivity(Intent.createChooser(intent, "Send device info through (Gmail is preferred)…"));
     }
 
-    public static String getDeviceName() {
+    public static String getBaseSendSubject() {
+        return new StringBuilder(70).append(DeviceInfo.getDeviceName())
+                .append(" ")
+                .append(Utils.getPackageName())
+                .append(" ")
+                .append(Utils.isDebug() ? "debug" : "release")
+                .append(" ")
+                .append(Utils.getVersionName())
+                .append(" ")
+                .append(Utils.getVersionCode())
+                .toString();
+    }
+
+    private static String getDeviceName() {
         String manufacturer = Build.MANUFACTURER;
         String model = Build.MODEL;
         String version = " Android " + String.valueOf(Build.VERSION.RELEASE);
