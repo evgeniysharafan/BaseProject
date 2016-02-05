@@ -40,6 +40,10 @@ android {
             signingConfig signingConfigs.debug
             manifestPlaceholders = [allowBackup: false, fullBackupContent: false]
         }
+        qa {
+            signingConfig signingConfigs.debug
+            manifestPlaceholders = [allowBackup: false, fullBackupContent: false]
+        }
         release {
             signingConfig signingConfigs.release
             minifyEnabled false
@@ -60,13 +64,20 @@ android {
         variant.outputs.each { output ->
             File alignedOutputFile = output.outputFile
             if (alignedOutputFile != null && alignedOutputFile.name.endsWith('.apk')) {
-                def df = new SimpleDateFormat("yy.MM.dd")
-                df.setTimeZone(TimeZone.getTimeZone("UTC"))
+                String buildName;
 
-                String buildName = "${appName}_" +
-                        "${variant.mergedFlavor.versionName}_" +
-                        "${df.format(new Date())}_" +
-                        "${variant.buildType.name}"
+                def buildType = variant.buildType.name
+                if ("debug".equals(buildType)) {
+                    buildName = "${appName}_" + "${variant.buildType.name}"
+                } else {
+                    def df = new SimpleDateFormat("yy.MM.dd")
+                    df.setTimeZone(TimeZone.getTimeZone("UTC"))
+
+                    buildName = "${appName}_" +
+                            "${variant.mergedFlavor.versionName}_" +
+                            "${df.format(new Date())}_" +
+                            "${variant.buildType.name}"
+                }
 
                 if (variant.buildType.zipAlignEnabled) {
                     output.outputFile = new File(alignedOutputFile.parent, buildName + '.apk')
@@ -89,7 +100,7 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.3.0'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.github.johnkil.android-robototextview:robototextview:2.3.0'
-    compile "com.evgeniysharafan.utils:utils:$utilsVersion"
+//    compile "com.evgeniysharafan.utils:utils:$utilsVersion"
     compile "com.evgeniysharafan.utils:recycler:$utilsVersion"
     compile "com.evgeniysharafan.utils:picasso:$utilsVersion"
 }
