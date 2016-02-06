@@ -8,12 +8,14 @@ android {
     def versionPatch = 0 // 0 - 999
 
     def appName = "BaseProject"
+    def packageName = "change.me"
+    def logsFileProviderAuthority = packageName + ".logsfileprovider"
 
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "change.me"
+        applicationId packageName
         minSdkVersion 15
         targetSdkVersion 23
         versionCode versionMajor * 100000 + versionMinor * 1000 + versionPatch
@@ -38,13 +40,15 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
-            manifestPlaceholders = [allowBackup: false, fullBackupContent: false]
+            manifestPlaceholders = [allowBackup              : false, fullBackupContent: false,
+                                    logsFileProviderAuthority: logsFileProviderAuthority]
         }
         release {
             signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            manifestPlaceholders = [allowBackup: true, fullBackupContent: true]
+            manifestPlaceholders = [allowBackup              : true, fullBackupContent: true,
+                                    logsFileProviderAuthority: logsFileProviderAuthority]
         }
     }
 
@@ -64,7 +68,7 @@ android {
 
                 def buildType = variant.buildType.name
                 if ("debug".equals(buildType)) {
-                    // We can't rename debug builds because of an issue of Android Studio.
+                    // We can't add date to debug builds because of an issue of Android Studio.
                     // Sometimes IDE pushes old build to device instead of the latest one.
                     // That's why the name of debug builds should be the same.
                     buildName = "${appName}_" + "${variant.buildType.name}"
@@ -88,7 +92,7 @@ android {
 
 dependencies {
     def supportLibVersion = "23.1.1"
-    def utilsVersion = "1.0.3"
+    def utilsVersion = "1.0.5"
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile "com.android.support:appcompat-v7:$supportLibVersion"
