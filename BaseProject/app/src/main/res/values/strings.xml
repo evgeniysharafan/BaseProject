@@ -8,7 +8,7 @@
     <string name="fragment_first">First</string>
     <string name="fragment_second">Second</string>
 
-    <!-- Actions -->
+    <!--Actions-->
     <string name="action_search">Search</string>
     <string name="action_accounts">Accounts</string>
     <string name="action_settings">Settings</string>

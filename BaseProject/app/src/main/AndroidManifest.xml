@@ -1,14 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="change.me">
 
-    <!-- PROTECTION_NORMAL -->
+    <!--PROTECTION_NORMAL-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
 
-    <!-- NEED TO CHECK -->
+    <!--NEED TO CHECK-->
 
     <application
         android:name=".util.App"
@@ -42,7 +42,7 @@
             <!--</intent-filter>-->
         </activity>
 
-        <!-- Provider for sending logs through Gmail on Android 6+ -->
+        <!--Provider for sending logs through Gmail on Android 6+-->
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${logsFileProviderAuthority}"

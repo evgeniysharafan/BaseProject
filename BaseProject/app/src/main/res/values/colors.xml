@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- bg -->
+    <!--bg-->
     <color name="window_bg">#FFFFFF</color>
 
-    <!-- palette -->
+    <!--palette-->
     <color name="primary_50">#E3F2FD</color>
     <color name="primary_100">#BBDEFB</color>
     <color name="primary_200">#90CAF9</color>
@@ -27,7 +27,7 @@
     <color name="toolbar_control_normal">@color/window_bg</color>
     <color name="toolbar_control_activated">@color/window_bg</color>
 
-    <!-- text -->
+    <!--text-->
     <color name="black_primary_text">#DE000000</color>
     <color name="black_secondary_text">#8A000000</color>
     <color name="black_icons">@color/black_secondary_text</color>
@@ -41,6 +41,6 @@
     <color name="white_hint_text">@color/white_disabled_text</color>
     <color name="white_divider">#1FFFFFFF</color>
 
-    <!-- other -->
+    <!--other-->
 
 </resources>

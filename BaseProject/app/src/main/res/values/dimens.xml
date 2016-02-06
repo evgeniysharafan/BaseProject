@@ -1,6 +1,6 @@
 <resources>
 
-    <!-- text size -->
+    <!--text size-->
     <dimen name="text_button_medium_all_cups">14sp</dimen>
     <dimen name="text_caption_regular">12sp</dimen>
     <dimen name="text_body_regular">14sp</dimen>
@@ -10,15 +10,15 @@
     <dimen name="text_headline_regular">24sp</dimen>
     <dimen name="text_display1_regular">34sp</dimen>
 
-    <!-- margin, padding -->
+    <!--margin, padding-->
     <dimen name="left_right_padding">16dp</dimen>
 
-    <!-- size -->
+    <!--size-->
     <dimen name="fab_size">56dp</dimen>
     <dimen name="contact_icon_size">@dimen/fab_size</dimen>
     <dimen name="chat_row_height">80dp</dimen>
 
-    <!-- elevation -->
+    <!--elevation-->
     <dimen name="toolbar_elevation">0dp</dimen>
 
 </resources>
