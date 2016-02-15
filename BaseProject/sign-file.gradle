@@ -1,0 +1,35 @@
+gradle.taskGraph.whenReady { taskGraph ->
+    if (taskGraph.hasTask(':app:assembleRelease')) {
+        def signingProperties = "local.properties"
+        def signingKeys = [
+                storePassword: { x -> x },
+                keyAlias     : { x -> x },
+                keyPassword  : { x -> x },
+        ]
+
+// Find signingProperties in project root, or in $HOME/.gradle
+        def file = ["${rootDir}/${signingProperties}",
+                    "${gradle.gradleUserHomeDir}/${signingProperties}"].find { file(it).exists() }
+
+        if (file) {
+            logger.error "Loading signing properties from ${file}"
+            def props = new Properties()
+            props.load(new FileInputStream(file))
+
+            // For each property apply it to the release signing config
+            signingKeys.any { key, fn ->
+                if (!props.containsKey(key)) {
+                    logger.error "Missing property ${key}"
+                    android.buildTypes.release.signingConfig = null
+                    return true
+                }
+
+                android.signingConfigs.release[key] = fn(props[key]);
+                return false
+            }
+        } else {
+            logger.error "Missing ${signingProperties} file"
+            android.buildTypes.release.signingConfig = null
+        }
+    }
+}

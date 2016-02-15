@@ -92,7 +92,7 @@ android {
 
 dependencies {
     def supportLibVersion = "23.1.1"
-    def utilsVersion = "1.0.6"
+    def utilsVersion = "1.0.8"
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile "com.android.support:appcompat-v7:$supportLibVersion"
@@ -107,3 +107,5 @@ dependencies {
     compile "com.evgeniysharafan.utils:recycler:$utilsVersion"
     compile "com.evgeniysharafan.utils:picasso:$utilsVersion"
 }
+
+apply from: '../sign-dialog.gradle'

@@ -1,0 +1,49 @@
+import groovy.swing.SwingBuilder
+
+gradle.taskGraph.whenReady { taskGraph ->
+    if (taskGraph.hasTask(':app:assembleRelease')) {
+        def storePassword = ''
+        String keyAlias = ''
+        def keyPassword = ''
+
+        if (System.console() == null) {
+            new SwingBuilder().edt {
+                dialog(modal: true, title: 'Enter key info', alwaysOnTop: true, resizable: false,
+                        locationRelativeTo: null, pack: true, show: true) {
+                    vbox {
+                        label(text: "Store password")
+                        storePasswordInput = passwordField()
+
+                        label(text: "Key alias")
+                        keyAliasInput = textField()
+
+                        label(text: "Key password")
+                        keyPasswordInput = passwordField()
+
+                        button(defaultButton: true, text: 'OK', actionPerformed: {
+                            storePassword = storePasswordInput.password;
+                            keyAlias = keyAliasInput.text
+                            keyPassword = keyPasswordInput.password;
+                            dispose();
+                        })
+                    }
+                }
+            }
+        } else {
+            storePassword = System.console().readPassword("\nStore password: ")
+            keyAlias = System.console().readLine("\nKey alias: ")
+            keyPassword = System.console().readPassword("\nKey password: ")
+        }
+
+        if (storePassword.size() <= 0 || keyAlias.size() <= 0 || keyPassword.size() <= 0) {
+            throw new InvalidUserDataException("You must fill in all dialog's fields to proceed.")
+        }
+
+        storePassword = new String((char[]) storePassword)
+        keyPassword = new String((char[]) keyPassword)
+
+        android.signingConfigs.release.storePassword = storePassword
+        android.signingConfigs.release.keyAlias = keyAlias
+        android.signingConfigs.release.keyPassword = keyPassword
+    }
+}

@@ -27,7 +27,7 @@ public final class MockData {
                     + RandomUtils.getInt(maxMessagesPerChatCount - minMessagesPerChatCount);
             for (int j = 0; j < size; j++) {
                 messages.add(new Message(RandomUtils.getLoremString(400, false), RandomUtils.getDateInMillis(365),
-                        RandomUtils.getBool(), RandomUtils.getBool()));
+                        RandomUtils.getBoolean(), RandomUtils.getBoolean()));
             }
 
             Collections.sort(messages);
