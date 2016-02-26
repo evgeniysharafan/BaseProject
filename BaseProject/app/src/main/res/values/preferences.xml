@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="key_change_me" translatable="false">key_debug_send_feedback</string>
+    <string name="title_change_me">Change</string>
+    <string name="summary_change_me">Change me</string>
+</resources>
