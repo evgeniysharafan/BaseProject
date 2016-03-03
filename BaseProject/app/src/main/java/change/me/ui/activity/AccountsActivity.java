@@ -18,7 +18,7 @@ public class AccountsActivity extends AppCompatActivity {
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
-    public static void launch(Activity activity) {
+    public static void start(Activity activity) {
         activity.startActivity(new Intent(activity, AccountsActivity.class));
     }
 

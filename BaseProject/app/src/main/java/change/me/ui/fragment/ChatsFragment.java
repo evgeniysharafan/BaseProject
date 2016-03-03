@@ -73,10 +73,10 @@ public class ChatsFragment extends Fragment implements OnChatClickListener {
         int id = item.getItemId();
 
         if (id == R.id.action_accounts) {
-            AccountsActivity.launch(getActivity());
+            AccountsActivity.start(getActivity());
             return true;
         } else if (id == R.id.action_settings) {
-            SettingsActivity.launch(getActivity());
+            SettingsActivity.start(getActivity());
             return true;
         }
 
