@@ -14,6 +14,7 @@
     <color name="primary_700">@color/blue_700</color>
     <color name="primary_800">@color/blue_800</color>
     <color name="primary_900">@color/blue_900</color>
+
     <color name="accent_100">@color/lime_A100</color>
     <color name="accent_200">@color/lime_A200</color>
     <color name="accent_400">@color/lime_A400</color>
@@ -22,8 +23,10 @@
     <color name="primary">@color/primary_500</color>
     <color name="primary_dark">@color/primary_700</color>
     <color name="accent">@color/primary_500</color>
+
     <color name="control_highlight">@color/primary_200</color>
     <color name="control_highlight_selected">@color/primary_300</color>
+
     <color name="toolbar_control_normal">@color/window_bg</color>
     <color name="toolbar_control_activated">@color/window_bg</color>
 

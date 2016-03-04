@@ -1,0 +1,5 @@
+<resources>
+
+    <dimen name="left_right_padding_button">12dp</dimen>
+
+</resources>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--palette colors-->
     <color name="red_50">#FFEBEE</color>
     <color name="red_100">#FFCDD2</color>
     <color name="red_200">#EF9A9A</color>
@@ -290,5 +291,31 @@
     <color name="white_disabled_text">#7FFFFFFF</color>
     <color name="white_hint_text">@color/white_disabled_text</color>
     <color name="white_divider">#1FFFFFFF</color>
+
+    <!--text size-->
+    <dimen name="text_caption_regular">12sp</dimen>
+    <dimen name="text_button_medium_all_cups">14sp</dimen>
+    <dimen name="text_body_regular">14sp</dimen>
+    <dimen name="text_body_medium">14sp</dimen>
+    <dimen name="text_subhead_regular">16sp</dimen>
+    <dimen name="text_title_medium">20sp</dimen>
+    <dimen name="text_headline_regular">24sp</dimen>
+    <dimen name="text_display1_regular">34sp</dimen>
+
+    <!--divider-->
+    <dimen name="divider_height">1dp</dimen>
+    <item name="divider_alpha" format="float" type="dimen">0.12</item>
+
+    <!--margin, padding-->
+    <dimen name="left_right_padding">16dp</dimen>
+    <dimen name="left_right_padding_button">16dp</dimen>
+
+    <!--size-->
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="fab_mini_size">40dp</dimen>
+
+    <!--elevation-->
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
 
 </resources>
