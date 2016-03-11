@@ -308,7 +308,7 @@
 
     <!--margin, padding-->
     <dimen name="left_right_padding">16dp</dimen>
-    <dimen name="left_right_padding_button">16dp</dimen>
+    <dimen name="left_right_padding_button">12dp</dimen>
 
     <!--size-->
     <dimen name="fab_size">56dp</dimen>

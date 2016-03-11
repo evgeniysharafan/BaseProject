@@ -70,14 +70,14 @@ public class ChatsFragment extends Fragment implements OnChatClickListener {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.action_accounts:
+                AccountsActivity.start(getActivity());
+                return true;
 
-        if (id == R.id.action_accounts) {
-            AccountsActivity.start(getActivity());
-            return true;
-        } else if (id == R.id.action_settings) {
-            SettingsActivity.start(getActivity());
-            return true;
+            case R.id.action_settings:
+                SettingsActivity.start(getActivity());
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
