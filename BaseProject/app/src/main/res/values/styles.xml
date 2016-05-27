@@ -17,4 +17,8 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="DialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/primary_900</item>
+    </style>
+
 </resources>

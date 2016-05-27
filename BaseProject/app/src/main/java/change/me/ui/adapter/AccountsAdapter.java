@@ -16,7 +16,7 @@ import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import change.me.R;
 import change.me.model.Account;
@@ -64,13 +64,13 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsAdapter.ViewHo
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.icon)
+        @BindView(R.id.icon)
         ImageButton icon;
-        @Bind(R.id.name)
+        @BindView(R.id.name)
         TextView name;
-        @Bind(R.id.type)
+        @BindView(R.id.type)
         TextView type;
-        @Bind(R.id.active)
+        @BindView(R.id.active)
         SwitchCompat active;
 
         ViewHolder(View v) {

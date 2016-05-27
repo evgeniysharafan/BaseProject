@@ -16,7 +16,7 @@ import android.view.View;
 
 import com.evgeniysharafan.utils.Fragments;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import change.me.R;
 import change.me.ui.fragment.FirstFragment;
@@ -28,11 +28,11 @@ public class NavigationDrawerActivity extends AppCompatActivity implements OnNav
     private static final String STATE_SELECTED_ITEM_ID = "state_selected_item_id";
     private static final String TAG_FOR_FRAGMENT = "tag_for_fragment";
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.drawer)
+    @BindView(R.id.drawer)
     DrawerLayout drawer;
-    @Bind(R.id.navigation_view)
+    @BindView(R.id.navigation_view)
     NavigationView navigationView;
 
     private ActionBarDrawerToggle drawerToggle;

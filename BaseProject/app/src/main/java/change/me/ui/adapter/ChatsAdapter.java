@@ -15,7 +15,7 @@ import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import change.me.R;
 import change.me.model.Chat;
@@ -73,13 +73,13 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder> 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.icon)
+        @BindView(R.id.icon)
         ImageButton icon;
-        @Bind(R.id.name)
+        @BindView(R.id.name)
         TextView name;
-        @Bind(R.id.message)
+        @BindView(R.id.message)
         TextView message;
-        @Bind(R.id.time)
+        @BindView(R.id.time)
         TextView time;
 
         ViewHolder(View v, OnChatClickListener listener) {

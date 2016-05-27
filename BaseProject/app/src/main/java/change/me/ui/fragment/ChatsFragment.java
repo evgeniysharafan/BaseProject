@@ -15,8 +15,9 @@ import android.view.ViewGroup;
 
 import com.evgeniysharafan.utils.Toasts;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import change.me.R;
 import change.me.model.mockdata.MockData;
 import change.me.ui.activity.AccountsActivity;
@@ -26,8 +27,9 @@ import change.me.ui.adapter.ChatsAdapter.OnChatClickListener;
 
 public class ChatsFragment extends Fragment implements OnChatClickListener {
 
-    @Bind(R.id.recyclerView)
+    @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    Unbinder unbinder;
 
     public static ChatsFragment newInstance() {
         return new ChatsFragment();
@@ -42,7 +44,7 @@ public class ChatsFragment extends Fragment implements OnChatClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chats, container, false);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
 
         prepareActionBar();
         initUI();
@@ -61,6 +63,16 @@ public class ChatsFragment extends Fragment implements OnChatClickListener {
             actionBar.setTitle(R.string.app_name);
             actionBar.setDisplayHomeAsUpEnabled(false);
         }
+    }
+
+    @Override
+    public void onChatClick(int position) {
+        Toasts.showShort("onChatClick");
+    }
+
+    @Override
+    public void onChatIconClick(int position) {
+        Toasts.showShort("onChatIconClick");
     }
 
     @Override
@@ -86,17 +98,7 @@ public class ChatsFragment extends Fragment implements OnChatClickListener {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
-    }
-
-    @Override
-    public void onChatClick(int position) {
-        Toasts.showShort("onChatClick");
-    }
-
-    @Override
-    public void onChatIconClick(int position) {
-        Toasts.showShort("onChatIconClick");
+        unbinder.unbind();
     }
 
 }

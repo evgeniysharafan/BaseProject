@@ -11,16 +11,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import change.me.R;
 import change.me.model.mockdata.MockData;
 import change.me.ui.adapter.AccountsAdapter;
 
 public class AccountsFragment extends Fragment {
 
-    @Bind(R.id.recyclerView)
+    @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    Unbinder unbinder;
 
     public static AccountsFragment newInstance() {
         return new AccountsFragment();
@@ -35,7 +37,7 @@ public class AccountsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_accounts, container, false);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
 
         prepareActionBar();
         initUI();
@@ -70,7 +72,7 @@ public class AccountsFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+        unbinder.unbind();
     }
 
 }
