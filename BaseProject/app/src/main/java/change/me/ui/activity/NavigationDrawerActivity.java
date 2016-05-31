@@ -68,7 +68,7 @@ public class NavigationDrawerActivity extends AppCompatActivity implements OnNav
             }
         };
 
-        drawer.setDrawerListener(drawerToggle);
+        drawer.addDrawerListener(drawerToggle);
         navigationView.getMenu().getItem(selectedItemPosition).setChecked(true);
 
         navigationView.setNavigationItemSelectedListener(this);
